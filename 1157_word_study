@@ -1,0 +1,25 @@
+s=input()
+s = s.upper()#모두 대문자로 변경
+
+alpha = [0,0,0,0,0
+         ,0,0,0,0,0
+         ,0,0,0,0,0
+         ,0,0,0,0,0
+         ,0,0,0,0,0,0]
+
+#각 알파벳의 등장 개수
+for i in range(0,len(s)):
+  aski = ord(s[i]) - 65#아스키 코드 사용
+  alpha[aski] += 1
+
+#최빈 문자 출력
+maxi = 0
+where = 0
+for j in range(0,len(alpha)):
+  if alpha[j] == maxi and maxi>0:#중복일 경우
+    where = -2 #?의 아스키 코드 변환
+  elif alpha[j] > maxi:#최빈값및 해당문자 갱신
+    maxi = alpha[j]
+    where = j
+
+print(chr(where+65))#아스키 코드로 변환
