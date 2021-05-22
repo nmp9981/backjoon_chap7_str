@@ -1,0 +1,13 @@
+#문자열 반복
+k=int(input())
+
+for i in range(0,k):
+  ls = []
+  n,word = input().split()
+  #각 문자에 대해 n회씩 출력
+  for x in range(0,len(word)):#문자위치
+    for y in range(0,int(n)):#반복횟수
+      ls.append(word[x])
+      print(ls[x*int(n)+y],end = "")#문자의 최종위치
+  print("")#출력시 공백제거
+
