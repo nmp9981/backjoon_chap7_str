@@ -1,0 +1,12 @@
+#숫자의 개수 입력
+n=int(input())
+s=input()
+sum = 0
+
+#각 성분들의 총합
+if n == len(s):
+  for i in range(0,len(s)):
+    sum += int(s[i])
+
+#결과 출력
+print(sum)
