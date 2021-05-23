@@ -1,0 +1,19 @@
+#단어 입력
+s = input()
+dial = len(s)#추가 시간
+
+#각 문자를 아스키 코드로 변환
+s = s.upper()
+for i in range(0,len(s)):
+  time = 0
+  num = ord(s[i]) + 1 #A는 65이므로 3의 배수를 맞추기 위해 1을 더함
+  #s이후 3의 배수 맞추기
+  if num >= 84 and num <= 90:#s ~ y
+    num -= 1
+  elif num == 91:#z
+    num -= 2
+  time = (num // 3 -20)
+  dial += time
+
+#총 시간
+print(dial)
