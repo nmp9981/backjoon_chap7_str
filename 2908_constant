@@ -1,0 +1,15 @@
+#두 수 입력
+a,b = input().split()
+
+#자리변환(뒤집기)
+#입력이 세자리 수 이므로 양끝만 바꿈 
+def swap(a):
+  re = []
+  for i in range(0,len(a)):
+    re.append(a[len(a)-i-1])
+  re_a = re[0]+re[1]+re[2]
+  return re_a
+
+re_a = swap(a)
+re_b = swap(b)
+print(max(re_a, re_b))
