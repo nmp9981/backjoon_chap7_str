@@ -1,0 +1,20 @@
+#단어 개수 입력
+n = int(input())
+count = 0
+
+#단어 입력
+for i in range(0,n):
+  s = input()
+  set_s = set(s)#집합변환 결과를 set_s로
+  word = 0#문자열의 길이 감소량
+
+  for j in range(1,len(s)):
+    if s[j] == s[j-1]:#이전 문자와 동일하다면
+      word += 1 #문자열의 길이 1씩 감소
+
+  #집합의 길이와 삭제 후 문자열의 길이가 동일하지 않으면 중복된 다른문자가 있어 그룹단어가 아님
+  if len(set_s) == (len(s) - word):
+    count+=1
+
+#그룹단어의 개수
+print(count)
