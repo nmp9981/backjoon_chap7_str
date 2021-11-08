@@ -1,0 +1,80 @@
+#include <iostream>
+#include <cstring>
+#include <cmath>
+#include <cctype>
+#include <algorithm>
+#include <vector>
+#include <chrono>
+#include <stack>
+#include <queue>
+#include <deque>
+#include <utility>
+#include <set>
+
+using namespace std;//이름공간 선언
+string name;
+const int alpha_size = 26;//알바벳은 총 26개
+int alpha[alpha_size];//각 알파벳의 등장횟수
+int center;//센터 알파벳 위치
+vector<char> palin;//결과
+int cnt = 0;//홀수인 알파벳의 개수
+
+//입력
+void input(){
+    cin>>name;
+    //알파벳 등장횟수 저장
+    for(int i=0;i<name.size();i++){
+        alpha[name[i]-'A']+=1;
+    }
+}
+
+//팰린드롬 구하기
+void palindrome(){
+    //등장횟수 홀수인 알파벳이 있는가?
+    for(int i=0;i<alpha_size;i++){
+        if(alpha[i]%2==1){
+            center = i;//센터에 올 알파벳 저장
+            cnt++;//등장횟수가 홀수인 알파벳의 개수
+        }
+    }
+    
+    //팰린드롬이 없다(등장횟수가 홀수인 알파벳이 2개 이상)
+    if(cnt>=2){
+        cout<<"I'm Sorry Hansoo";
+        return;
+    }
+    
+    //팰린드롬 구하기
+    for(int i=0;i<alpha_size;i++){
+        //각 알파벳의 반복횟수 구하기
+        int size = alpha[i]/2;
+        for(int j=0;j<size;j++){
+            palin.push_back(char(i+65));
+        }
+    }
+}
+
+//결과
+void result(){
+    //왼쪽부분
+    for(int i=0;i<palin.size();i++){
+        cout<<palin[i];
+    }
+    //가운데
+    if(cnt==1){
+        cout<<char(center+65);
+    }
+    //오른쪽부분
+    for(int i=palin.size()-1;i>=0;i--){
+        cout<<palin[i];
+    }
+}
+int main(){
+    cin.tie(0);
+    cout.tie(0);
+
+    input();//입력
+    palindrome();//펠린드롬
+    result();//결과 출력
+    return 0;
+}
