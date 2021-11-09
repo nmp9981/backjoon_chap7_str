@@ -1,0 +1,56 @@
+#include <iostream>
+#include <cstring>
+#include <cmath>
+#include <cctype>
+#include <algorithm>
+#include <vector>
+#include <chrono>
+#include <stack>
+#include <queue>
+#include <deque>
+#include <utility>
+
+using namespace std;//이름공간 선언
+int n,m;
+string s;
+int cnt = 0;
+int chk = 0;//pn탐색 시작여부
+
+//입력
+void input(){
+    cin>>n;
+    cin>>m;
+    cin>>s;//s입력
+}
+
+//솔루션
+void ioi(){
+    for(int i=0;i<m;i++){
+        int pn = 0;//pn의 길이
+        //시작점 일치
+        if(s[i]=='I'){
+            //IOIOI..세트가 만들어지는지 검사
+            while(s[i+1]=='O' && s[i+2]=='I'){
+                pn++;
+                //pn 세트가 만들어지면
+                if(pn==n){
+                    cnt++;//개수증가
+                    pn--;//중복세트 방지
+                }
+                i+=2;//다음지점
+            }
+            pn == 0;//초기화
+        }
+        
+        
+    }
+}
+int main(){
+    cin.tie(0);
+    cout.tie(0);
+
+    input();//입력
+    ioi();//문자열
+    cout<<cnt;//결과
+    return 0;
+}
