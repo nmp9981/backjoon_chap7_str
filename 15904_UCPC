@@ -1,0 +1,23 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+int main(){
+    int k = 0;
+    string input, check;
+    char ucpc[4] = {'U', 'C', 'P', 'C'};
+    getline(cin, input);
+    
+    for(int i = 0; i < input.length(); i++){
+        if(input[i] == ucpc[k]){
+            if(k == 3) {
+                cout << "I love UCPC" << endl;
+                return 0;
+            }
+            k++;
+        }
+    }
+    
+    cout << "I hate UCPC" << endl;
+}
