@@ -1,0 +1,57 @@
+#include <string>
+#include <vector>
+#include <iostream>
+#include <set>
+
+using namespace std;
+
+int answer = 0;
+vector<int> combi;
+int col;
+int row;
+vector<vector<string>> relations;
+
+//검사하기
+bool search(vector<int> x,vector<vector<string>> r){
+	//각 열을 기준으로 검사
+	for(int i=0;i<x.size();i++){
+		set<string> s;//중복확인을 위해 집합을 이용
+		for(int j=0;j<row;j++){
+			s.insert(r[j][x[i]]);
+		}
+		if(s.size()!=row){//중복되는것이 있음
+			return false;
+		}
+	}
+	return true;//모두 통과
+}
+
+//조합찾기
+void combination(int goal,int cnt,int idx){
+	//조합을 모두 찾으면
+	if(cnt==goal){
+		if(search(combi,relations)==true){
+			answer+=1;
+		}
+		return;
+	}
+	
+	//조합구하기
+	for(int j=idx;j<col;j++){
+		combi.push_back(j);
+		combination(goal,cnt+1,j+1);
+		combi.pop_back();
+	}
+}
+
+int solution(vector<vector<string>> relation) {
+    col = relation[0].size();//열
+    row = relation.size();//행
+    relations = relation;
+    
+    for(int i=1;i<=col;i++){
+    	combi.clear();
+    	combination(i,0,0);
+    }
+    return answer;
+}
