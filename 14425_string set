@@ -1,0 +1,38 @@
+#include <iostream>
+#include <cstring>
+#include <map>
+using namespace std;
+
+int n,m,cnt;
+string s;
+map<string,bool> dict;//단어, 있는가?
+
+//입력
+void input(){
+    ios_base::sync_with_stdio(0);//빠른 입력
+    cin.tie(0);/
+    cin>>n>>m;
+    for(int i=0;i<n;i++){
+        cin>>s;
+        dict[s] = true;
+    }
+}
+
+//문자열 체크
+void chk(){
+    ios_base::sync_with_stdio(0);//빠른 입력
+    cin.tie(0);
+    for(int i=0;i<m;i++){
+        cin>>s;
+        if(dict[s]==true){//해당 문자열이 존재하면
+            cnt++;//개수 증가
+        }
+    }
+    cout<<cnt;
+}
+
+int main(){
+    input();//입력
+    chk();//문자열 체크
+    return 0;
+}
